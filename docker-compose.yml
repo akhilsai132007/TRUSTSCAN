@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: trustscan-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env.example
+    networks:
+      - trustscan-network
+    # Optional: volume mount for live reloading during dev
+    # volumes:
+    #   - ./backend:/app
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: trustscan-frontend
+    ports:
+      - "3000:80"
+    networks:
+      - trustscan-network
+    depends_on:
+      - backend
+
+networks:
+  trustscan-network:
+    driver: bridge

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280">
+  <rect width="400" height="280" fill="#e2e8f0"/>
+  <rect x="20" y="20" width="100" height="130" fill="#94a3b8" rx="4"/>
+  <!-- Slight mismatch indicator color on photo -->
+  <rect x="20" y="20" width="100" height="130" fill="#fbbf24" fill-opacity="0.2" rx="4"/>
+  
+  <rect x="140" y="30" width="150" height="15" fill="#64748b" rx="2"/>
+  <rect x="140" y="60" width="200" height="10" fill="#94a3b8" rx="2"/>
+  <rect x="140" y="80" width="180" height="10" fill="#94a3b8" rx="2"/>
+  <rect x="140" y="100" width="160" height="10" fill="#94a3b8" rx="2"/>
+  
+  <rect x="20" y="220" width="360" height="15" fill="#475569" rx="2"/>
+  <rect x="20" y="245" width="360" height="15" fill="#475569" rx="2"/>
+  <text x="200" y="160" font-family="monospace" font-size="12" fill="#d97706" text-anchor="middle">BORDERLINE DOCUMENT (FACE MISMATCH)</text>
+</svg>

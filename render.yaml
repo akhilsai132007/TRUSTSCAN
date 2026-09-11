@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: trustscan-api
+    env: docker
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    plan: free
+    healthCheckPath: /api/v1/system/health
+    envVars:
+      - key: ALLOWED_ORIGINS
+        value: '["https://trustscan-frontend.onrender.com"]' # Replace with actual frontend URL in Render Dashboard for prod
+      - key: DATABASE_URL
+        value: postgresql+asyncpg://postgres:postgres@localhost:5432/trustscan # Replace with actual managed DB URL
+      - key: THRESHOLD_FACE_MATCH
+        value: 0.75
+      - key: THRESHOLD_TAMPER
+        value: 0.40
+      - key: THRESHOLD_TAMPER_EXTREME
+        value: 0.80
+      - key: THRESHOLD_METADATA
+        value: 0.50
