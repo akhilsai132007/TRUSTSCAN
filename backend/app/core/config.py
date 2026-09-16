@@ -1,5 +1,6 @@
-from typing import List
+from typing import List, Any
 from pydantic_settings import BaseSettings
+from pydantic import field_validator
 
 class Settings(BaseSettings):
     # Core
@@ -8,6 +9,16 @@ class Settings(BaseSettings):
     
     # Database
     DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/trustscan"
+
+    @field_validator("DATABASE_URL", mode="before")
+    @classmethod
+    def assemble_db_connection(cls, v: Any) -> Any:
+        if isinstance(v, str):
+            if v.startswith("postgres://"):
+                return v.replace("postgres://", "postgresql+asyncpg://", 1)
+            if v.startswith("postgresql://"):
+                return v.replace("postgresql://", "postgresql+asyncpg://", 1)
+        return v
     
     # Risk Thresholds
     THRESHOLD_FACE_MATCH: float = 0.75
